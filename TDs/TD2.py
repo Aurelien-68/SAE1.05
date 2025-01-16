@@ -15,9 +15,9 @@ with open('donnees.csv', mode='w', encoding='utf-8', newline='') as file:
 
 result = [
 {"Nom":},
-{"Nom": },
 {"Nom":},
-{"Nom": },
+{"Nom":},
+{"Nom":},
 ]
 with open('resultats.csv', mode='w', encoding='utf-8', newline='') as file:
     champs = ["Nom", "Prenom", "Resultat"]
