@@ -18,6 +18,7 @@ def liste_fichier():
             infos_fichiers.append([chemin_fichier, nom_fichier, taille_fichier])
             return infos_fichiers
 
+
 # Trie la liste en fonction de la taille (le troisième élément), de manière décroissante
 def trier_par_taille(infos_fichiers):
     # Trier la liste par la taille
