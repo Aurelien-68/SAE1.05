@@ -21,12 +21,28 @@ def trier_par_taille(infos_fichiers):
     # Trier la liste par la taille
     return sorted(infos_fichiers, key=lambda x: x[2], reverse=True)
 
+def filtrer_fichiers(infos_triees, TAILLE_MINI_FICHIER_EN_MEGA_OCTET, NB_MAXI_FICHIERS):
+    # Convertir la taille minimale en octets
+    taille_min_octets = TAILLE_MINI_FICHIER_EN_MEGA_OCTET * 1048576  # 1 Mo = 1048576 octets
+
+    # Filtrer les fichiers dont la taille est supérieure à la taille minimale spécifiée
+    fichiers_filtres = [fichier for fichier in infos_triees if fichier[2] > taille_min_octets]
+
+    # Limiter le nombre de fichiers à NB_MAXI_FICHIERS
+    fichiers_filtres = fichiers_filtres[:NB_MAXI_FICHIERS]
+
+    return fichiers_filtres
+
+
 # Récupérer les info des fichiers
 infos = liste_fichier()
 
 # Trier les informations par taille
 infos_triees = trier_par_taille(infos)
 
+#Filtré les infos
+infos_filtees = filtrer_fichiers(infos_triees, 0, 100) #a choisir en fonction des besoin
+
 # Afficher les résultats triés
-for info in infos_triees:
+for info in infos_filtees:
     print(f"Chemin : {info[0]}, Nom : {info[1]}, Taille : {info[2]} octets")
