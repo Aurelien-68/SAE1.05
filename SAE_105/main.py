@@ -8,7 +8,6 @@ def liste_fichier():
     # Liste pour stocker les informations sur les fichiers
     infos_fichiers=[]
 
-
     # Liste les fichiers et sous-répertoires du répertoire et leurs taille en octets
     for fichier in repertoire_de_base.iterdir():
         if fichier.is_file():  # pour s'assurer que c'est bien un fichier et pas un repertoire
