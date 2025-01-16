@@ -7,10 +7,10 @@ def liste_fichier():
     infos_fichiers=[]
 
 
-    # Liste les fichiers et sous-répertoires du répertoire
+    # Liste les fichiers et sous-répertoires du répertoire et leurs taille en octets
     for fichier in repertoire_de_base.iterdir():
-        chemin_fichier = Path(fichier)
-        nom_fichier = fichier
+        chemin_fichier = str(fichier)  # Convertir le chemin en chaîne de caractères
+        nom_fichier = fichier.name  # Extraire le nom du fichier sans son chemin
         taille_fichier = chemin_fichier.stat().st_size  # Taille en octets
         infos_fichiers.append([chemin_fichier, nom_fichier, taille_fichier])
     return infos_fichiers
