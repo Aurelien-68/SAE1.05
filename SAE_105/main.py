@@ -1,4 +1,6 @@
+import json
 from pathlib import Path
+
 def liste_fichier():
     # Crée un objet Path pour le répertoire de base
     repertoire_de_base = Path.cwd()
@@ -33,6 +35,15 @@ def filtrer_fichiers(infos_triees, TAILLE_MINI_FICHIER_EN_MEGA_OCTET, NB_MAXI_FI
 
     return fichiers_filtres
 
+def creer_fichier_json(liste_fichiers, nom_fichier_json):
+    # Remplacer les antislashs par des doubles antislashs dans le chemin
+    for liste_fichier in liste_fichiers:
+        liste_fichier[0] = liste_fichier[0].replace('\\', '\\\\')
+
+    # Ouvrir le fichier en mode écriture et y enregistrer la liste au format JSON
+    with open(nom_fichier_json, 'w', encoding='utf-8') as f:
+        json.dump(liste_fichiers, f, indent=4)
+
 
 # Récupérer les info des fichiers
 infos = liste_fichier()
@@ -41,8 +52,10 @@ infos = liste_fichier()
 infos_triees = trier_par_taille(infos)
 
 #Filtré les infos
-infos_filtees = filtrer_fichiers(infos_triees, 0, 100) #a choisir en fonction des besoin
+infos_filtees = filtrer_fichiers(infos_triees, 0, 100) #A COMPLETER !!!
 
 # Afficher les résultats triés
 for info in infos_filtees:
     print(f"Chemin : {info[0]}, Nom : {info[1]}, Taille : {info[2]} octets")
+
+creer_fichier_json(infos_filtees, "fichiers.json")
