@@ -1,6 +1,5 @@
 import json
 from pathlib import Path
-
 def liste_fichier():
     # Crée un objet Path pour le répertoire de base
     repertoire_de_base = Path.cwd()
