@@ -52,7 +52,7 @@ infos = liste_fichier()
 infos_triees = trier_par_taille(infos)
 
 #Filtré les infos
-infos_filtees = filtrer_fichiers(infos_triees, 0, 100) #A COMPLETER !!!
+infos_filtees = filtrer_fichiers(infos_triees, 1, 100) #A COMPLETER !!!
 
 # Afficher les résultats triés
 for info in infos_filtees:
