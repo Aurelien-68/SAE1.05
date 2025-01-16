@@ -12,13 +12,14 @@ with open('donnees.csv', mode='w', encoding='utf-8', newline='') as file:
     donnees = csv.DictWriter(file, fieldnames=champs)
     donnees.writeheader()
     donnees.writerows(etudiants)
-
+'''
 result = [
 {"Nom":},
 {"Nom":},
 {"Nom":},
 {"Nom":},
 ]
+'''
 with open('resultats.csv', mode='w', encoding='utf-8', newline='') as file:
     champs = ["Nom", "Prenom", "Resultat"]
     resultats = csv.DictWriter(file, fieldnames=champs)
