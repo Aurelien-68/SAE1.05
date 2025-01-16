@@ -1,6 +1,18 @@
-def repertoire_de_base:
+from pathlib import Path
+def liste_fichier():
     # Crée un objet Path pour le répertoire de base
-    chemin_base = Path(repertoire)
+    repertoire_de_base = Path()
 
     # Liste pour stocker les informations sur les fichiers
-    infos_fichier=[]
+    infos_fichiers=[]
+
+
+    # Liste les fichiers et sous-répertoires du répertoire
+    for fichier in repertoire_de_base.iterdir():
+        chemin_fichier = Path(fichier)
+        nom_fichier = fichier
+        taille_fichier = chemin_fichier.stat().st_size  # Taille en octets
+        infos_fichiers.append(chemin_fichier, nom_fichier, taille_fichier)
+
+
+    print(infos_fichiers)
