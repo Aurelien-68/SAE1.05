@@ -9,11 +9,12 @@ def liste_fichier():
 
     # Liste les fichiers et sous-répertoires du répertoire et leurs taille en octets
     for fichier in repertoire_de_base.iterdir():
-        chemin_fichier = str(fichier)  # Convertir le chemin en chaîne de caractères
-        nom_fichier = fichier.name  # Extraire le nom du fichier sans son chemin
-        taille_fichier = fichier.stat().st_size  # Taille en octets
-        infos_fichiers.append([chemin_fichier, nom_fichier, f"{taille_fichier} octets"])
-    return infos_fichiers
+        if fichier.is_file():  # Assurez-vous qu'il s'agit d'un fichier et pas d'un répertoire
+            chemin_fichier = str(fichier)  # Convertir le chemin en chaîne de caractères
+            nom_fichier = fichier.name  # Extraire le nom du fichier sans son chemin
+            taille_fichier = fichier.stat().st_size  # Taille en octets
+            infos_fichiers.append([chemin_fichier, nom_fichier, f"{taille_fichier} octets"])
+            return infos_fichiers
 
 
 infos = liste_fichier()
